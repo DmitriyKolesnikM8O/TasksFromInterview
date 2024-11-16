@@ -43,10 +43,6 @@ func main() {
 }
 
 func invertTree(root *TreeNode) *TreeNode {
-	if root == nil {
-		return &TreeNode{}
-	}
-
 	NewTree := &TreeNode{
 		Val:   root.Val,
 		Left:  nil,
