@@ -77,6 +77,7 @@ func main() {
 		},
 	}
 	fmt.Println(getMinimumDifference(tree))
+	fmt.Println(getMinimumDifference2(tree))
 
 }
 
@@ -122,4 +123,34 @@ func getMinimumDifference(root *TreeNode) int {
 	}
 
 	return result
+}
+
+func getMinimumDifference2(root *TreeNode) int {
+	vals := []int{}
+
+	var traverse func(*TreeNode)
+	traverse = func(root *TreeNode) {
+		if root == nil {
+			return
+		}
+		traverse(root.Left)
+		vals = append(vals, root.Val)
+		traverse(root.Right)
+	}
+	traverse(root)
+
+	minDiff := math.MaxInt64
+	for i := 1; i < len(vals); i++ {
+		minDiff = min(minDiff, vals[i]-vals[i-1])
+	}
+
+	return minDiff
+}
+
+func min(a, b int) int {
+	if a > b {
+		return b
+	}
+
+	return a
 }
