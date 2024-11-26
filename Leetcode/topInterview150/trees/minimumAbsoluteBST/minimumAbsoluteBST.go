@@ -86,7 +86,7 @@ func getMinimumDifference(root *TreeNode) int {
 		return 0
 	}
 
-	if root != nil && root.Left == nil && root.Right == nil {
+	if root.Left == nil && root.Right == nil {
 		return root.Val
 	}
 
