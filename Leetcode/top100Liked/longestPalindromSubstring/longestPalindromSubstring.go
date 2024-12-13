@@ -9,21 +9,20 @@ func main() {
 }
 
 func longestPalindrome(s string) string {
-	if s == "" {
-		return ""
+	if len(s) < 2 {
+		return s
 	}
 
-	result := string(s[0])
-	for i := 0; i < len(s)-1; i++ {
-		current := string(s[i])
-		for j := i + 1; j < len(s); j++ {
-			if checkedPalindrom(string(current) + string(s[j])) {
-				if len(result) < len(string(current)+string(s[j])) {
-					result = string(current) + string(s[j])
+	result := ""
+	current := ""
+	for i := 0; i < len(s); i++ {
+		for j := i; j < len(s); j++ {
+			current = s[i : j+1]
+			if checkedPalindrom(string(current)) {
+				if len(result) < len(string(current)) {
+					result = string(current)
 				}
 			}
-			current += string(s[j])
-			// s
 		}
 	}
 
